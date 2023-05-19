@@ -97,8 +97,8 @@ objeto desde otro objeto
 let persa1 = {
     nombre: 'Juan',
     apellido: 'Axki',
-    nombreCompleto: function () {
-        return this.nombre + ' ' + this.apellido
+    nombreCompleto: function (titulo, telefono, direccion) {
+        return titulo + ': '+ this.nombre + ' ' + this.apellido + ' telefono: '+telefono + ' direccion: ' + direccion
     }
 }
 
@@ -108,7 +108,12 @@ let persa2 = {
     //Uso de call para usar el metodo perona1.nombreCompleto
 }
 
-console.log( persa1.nombreCompleto() )
+console.log( persa1.nombreCompleto("Inge", 234456, "Cra 25 B # 14 - 15") )
 
-//metodo call
-console.log( persa1.nombreCompleto.call(persa2) )
+//metodo call se pasa por separado los argumentos
+console.log( persa1.nombreCompleto.call(persa2, "Inge", 3245667, "Cra 24 A") )
+
+//Metodo Apply, podemos utilizarlo para hacer este tipo de llamadas, la diferencia es la manera en que vamos a pasar los parametros
+// los argumentos en apply se pasan en un array
+let arreglo = ["Inge", 32323465, "CRA 23 - 14 12"]
+console.log( persa1.nombreCompleto.apply(persa2, arreglo))
